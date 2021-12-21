@@ -1,0 +1,54 @@
+{% extends 'layout.html' %}
+
+{% block title %}
+  <title> All Laptop</title>
+{% endblock %}
+
+{% block content %}
+    <h1 style="text-align:center;">All Laptop</h1>
+    <center>
+    <table border="2px">
+        <tr>
+            <th>laptop id</th>
+            <th>company</th>
+            <th>model_name</th>
+            <th>ram</th>
+            <th>rom</th>
+            <th>processor</th>
+            <th>price</th>
+            <th>weight</th>
+            <th>update</th>
+            <th>delete</th>
+
+        </tr>
+        {% for laptop in object_list %}
+            <tr>
+                <td>{{laptop.id}}</td>
+                <td>{{laptop.company}}</td>
+                <td>{{laptop.model_name}}</td>
+                <td>{{laptop.ram}}</td>
+                <td>{{laptop.rom}}</td>
+                <td>{{laptop.processor}}</td>
+                <td>{{laptop.price}}</td>
+                <td>{{laptop.weight}}</td>
+
+
+
+                <td>
+                    <a href="{% url 'delete_laptop' laptop.id %}">
+                        <button class="btn btn-danger">Delete</button>
+                    </a>
+
+                </td>
+                <td>
+                    <a href="{% url 'update_laptop' laptop.id %}"><button class="btn btn-warning">Update</button></a>
+                </td>
+            </tr>
+        {% endfor %}
+    </table>
+    </center>
+    <br>
+    <a href="{% url 'create_laptop' %}">
+        <button class="btn btn-success"> Add laptop</button>
+    </a>
+{% endblock %}
